@@ -53,6 +53,8 @@ function Invoke-PassSpray {
 	else{$objSearcher.SearchRoot = New-Object System.DirectoryServices.DirectoryEntry}
 	$objSearcher.Filter = "(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
 	$objSearcher.PageSize = 1000
+ 	$objSearcher.PropertiesToLoad.Clear() | Out-Null
+ 	$objSearcher.PropertiesToLoad.Add("samaccountname") | Out-Null
 	$AllUsers = $objSearcher.FindAll() | ForEach-Object { $_.properties.samaccountname }
 	$AllUsers = $AllUsers | Sort-Object -Unique
 	
