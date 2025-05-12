@@ -1,7 +1,7 @@
 # PassSpray
 Domain Password Spray
 
-Important: Spraying passwords increases the Bad Pwd Count of the user you are trying to validate credentials for (for each wrong attempt)
+⚠️ Warning: Spraying passwords increases the Bad Pwd Count of the user you are trying to validate credentials for (for each wrong attempt)
 
 ### Load PassSpray in memory
 ```
